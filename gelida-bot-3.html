@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🍦 גלידה אלעד</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --sky:#64c8f0;--ocean:#1a90d4;--sand:#fff8ee;--coral:#ff6b6b;--mango:#ffb347;--bot-bg:#e8f7ff;--user-bg:#fff0d6; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Heebo',sans-serif;background:linear-gradient(160deg,#b8edff 0%,#ffe8cc 60%,#ffd6e8 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;}
+  .phone{width:100%;max-width:420px;border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.2);display:flex;flex-direction:column;height:90vh;max-height:780px;}
+  .hdr{background:linear-gradient(135deg,#1a90d4,#0d5fa0);padding:16px 20px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+  .av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ffb347,#ff6b6b);display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid rgba(255,255,255,.3);flex-shrink:0;}
+  .hdr h1{font-family:'Fredoka One';color:#fff;font-size:19px;}
+  .hdr p{color:rgba(255,255,255,.8);font-size:12px;}
+  .dot{width:7px;height:7px;border-radius:50%;background:#7de8c8;display:inline-block;margin-left:4px;animation:pulse 1.5s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
+  .chat{flex:1;overflow-y:auto;padding:14px 12px;background:#fff8ee;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth;}
+  .chat::-webkit-scrollbar{width:4px;}
+  .chat::-webkit-scrollbar-thumb{background:#c9e8f7;border-radius:4px;}
+  .msg{display:flex;align-items:flex-end;gap:8px;animation:si .3s ease;}
+  @keyframes si{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  .msg.bot{flex-direction:row;}.msg.user{flex-direction:row-reverse;}
+  .mav{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#ffb347,#ff6b6b);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+  .bbl{max-width:80%;padding:9px 13px;border-radius:18px;font-size:14px;line-height:1.55;white-space:pre-wrap;word-break:break-word;}
+  .msg.bot .bbl{background:#e8f7ff;border-bottom-right-radius:4px;color:#1a3a5c;}
+  .msg.user .bbl{background:#fff0d6;border-bottom-left-radius:4px;color:#5c3317;}
+  .qr-wrap{padding:6px 12px 4px;background:#fff8ee;display:flex;flex-wrap:wrap;gap:6px;flex-shrink:0;}
+  .qr{background:#fff;border:1.5px solid #64c8f0;color:#1a90d4;border-radius:20px;padding:6px 12px;font-family:'Heebo';font-size:13px;cursor:pointer;transition:all .2s;}
+  .qr:hover{background:#e8f7ff;transform:translateY(-1px);}
+  .cart-bar{background:linear-gradient(90deg,#1a90d4,#0d5fa0);color:#fff;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;font-size:13px;font-weight:700;min-height:44px;}
+  .clr{background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:12px;padding:4px 10px;font-family:'Heebo';font-size:12px;cursor:pointer;}
+  .inp-bar{background:#fff;padding:8px 12px;display:flex;gap:8px;align-items:center;border-top:1px solid #e8f0f7;flex-shrink:0;}
+  .inp-bar input{flex:1;border:1.5px solid #cce8f7;border-radius:22px;padding:9px 14px;font-family:'Heebo';font-size:14px;color:#1a3a5c;outline:none;background:#f4f9ff;direction:rtl;}
+  .inp-bar input:focus{border-color:#64c8f0;background:#fff;}
+  .sbtn{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#ffb347,#ff6b6b);border:none;color:#fff;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 3px 10px rgba(255,107,107,.4);transition:transform .15s;}
+  .sbtn:hover{transform:scale(1.08);}
+  .wa{background:#25d366;padding:11px 16px;display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;font-family:'Heebo';font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;flex-shrink:0;}
+  .wa:hover{background:#1db954;}
+  .wa svg{width:20px;height:20px;fill:#fff;flex-shrink:0;}
+  .card{background:#fff;border-radius:14px;padding:10px 14px;margin:2px 0;box-shadow:0 2px 8px rgba(0,0,0,.07);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .cn{font-size:14px;font-weight:600;color:#1a3a5c;}.cp{font-size:12px;color:#888;}
+  .abtn{background:linear-gradient(135deg,#ffb347,#ff6b6b);border:none;color:#fff;border-radius:50%;width:32px;height:32px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(255,107,107,.3);transition:transform .15s;}
+  .abtn:hover{transform:scale(1.12);}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="hdr">
+    <div class="av">🍦</div>
+    <div><h1>גלידה אלעד</h1><p><span class="dot"></span> בוט הזמנות</p></div>
+  </div>
+  <div class="chat" id="chat"></div>
+  <div class="qr-wrap" id="qr"></div>
+  <div class="cart-bar"><div>🛒 <span id="cs">הסל ריק</span></div><button class="clr" onclick="clearCart()">נקה</button></div>
+  <div class="inp-bar">
+    <button class="sbtn" onclick="doSend()">➤</button>
+    <input id="inp" type="text" placeholder="כתוב שם גלידה..." onkeydown="if(event.key==='Enter')doSend()" />
+  </div>
+  <a class="wa" href="#" onclick="openWA(event)">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    שלח הזמנה לאלעד – 052-4585860
+  </a>
+</div>
+<script>
+const MENU=[
+  {id:1, name:'מגנום',      full:'מגנום / קראנץ\'', price:9,  emoji:'🍫', note:'5 ב-40 ש"ח', keys:['מגנום','קראנץ']},
+  {id:2, name:'קסטה',       full:'קסטה טעמקור',      price:6,  emoji:'🍨', keys:['קסטה','טעמקור']},
+  {id:3, name:'פסק זמן',    full:'פסק זמן',           price:7,  emoji:'🍫', keys:['פסק','פסק זמן']},
+  {id:4, name:'גומיגם',     full:'גומיגם',            price:6,  emoji:'🍬', keys:['גומי','גומיגם']},
+  {id:5, name:'טילון',      full:'טילון קטן',         price:6,  emoji:'🍦', keys:['טילון']},
+  {id:6, name:'חמשושים',    full:'חמשושים/ננסים/פצפצים/אבטיח', price:6, emoji:'🍉', keys:['חמשוש','ננסים','פצפצים','אבטיח','חמשושים']},
+  {id:7, name:'לה פרוטה',   full:'לה פרוטה',          price:5,  emoji:'🍓', keys:['פרוטה','לה פרוטה']},
+  {id:8, name:'סולרו',      full:'סולרו',             price:7,  emoji:'🧊', keys:['סולרו']},
+  {id:9, name:'קרח',        full:'קרח שטראוס / נסטלה',price:3,  emoji:'🧊', note:'10 ב-20 ש"ח', keys:['קרח','שטראוס','נסטלה']},
+  {id:10,name:'קוקילידה',   full:'קוקילידה',          price:9,  emoji:'🍦', keys:['קוקילידה']},
+  {id:11,name:'מילקה',      full:'מילקה',             price:9,  emoji:'🍫', keys:['מילקה']},
+  {id:12,name:'שוקובו',     full:'שוקובו',            price:7,  emoji:'🍫', keys:['שוקובו']},
+];
+
+let cart={};
+
+function total(){return Object.values(cart).reduce((s,v)=>s+v.item.price*v.qty,0);}
+function count(){return Object.values(cart).reduce((s,v)=>s+v.qty,0);}
+
+function updateBar(){
+  const el=document.getElementById('cs');
+  if(!count()){el.textContent='הסל ריק';return;}
+  const lines=Object.values(cart).map(v=>`${v.item.emoji}${v.item.name} x${v.qty}`).join(' | ');
+  el.textContent=`${lines} — ${total()} ₪`;
+}
+
+function clearCart(){cart={};updateBar();bot('🗑️ הסל נוקה!');showMainQR();}
+
+function bot(txt){
+  const d=document.createElement('div');d.className='msg bot';
+  d.innerHTML=`<div class="mav">🍦</div><div class="bbl">${txt.replace(/\n/g,'<br>')}</div>`;
+  document.getElementById('chat').appendChild(d);sc();
+}
+function usr(txt){
+  const d=document.createElement('div');d.className='msg user';
+  d.innerHTML=`<div class="bbl">${txt}</div>`;
+  document.getElementById('chat').appendChild(d);sc();
+}
+function sc(){const c=document.getElementById('chat');c.scrollTop=c.scrollHeight;}
+
+function setQR(btns){
+  const w=document.getElementById('qr');w.innerHTML='';
+  btns.forEach(b=>{
+    const el=document.createElement('button');el.className='qr';el.textContent=b.l;
+    el.onclick=()=>{usr(b.l);b.fn();};w.appendChild(el);
+  });
+}
+
+function showMainQR(){
+  setQR([
+    {l:'📋 כל המחירון',fn:showAll},
+    {l:'🍫 גלידות שוקולד',fn:()=>showCat([1,2,3,10,11,12])},
+    {l:'🧊 ארטיקים קרים',fn:()=>showCat([5,6,7,8,9])},
+    {l:'🛒 סיים הזמנה',fn:finish},
+  ]);
+}
+
+function showAll(){
+  bot('הנה כל המחירון 👇');
+  renderItems(MENU);
+  setQR([{l:'🛒 סיים הזמנה',fn:finish},{l:'🗑️ נקה סל',fn:clearCart}]);
+}
+
+function showCat(ids){
+  bot('הנה הבחירות 👇');
+  renderItems(MENU.filter(i=>ids.includes(i.id)));
+  setQR([{l:'📋 כל המחירון',fn:showAll},{l:'🛒 סיים',fn:finish}]);
+}
+
+function renderItems(items){
+  const chat=document.getElementById('chat');
+  items.forEach(item=>{
+    const d=document.createElement('div');d.className='msg bot';
+    const note=item.note?`<span style="color:#aaa;font-size:11px;"> (${item.note})</span>`:'';
+    d.innerHTML=`<div class="mav" style="visibility:hidden"></div>
+      <div class="card">
+        <div><div class="cn">${item.emoji} ${item.full}</div><div class="cp">${item.price} ש"ח${note}</div></div>
+        <button class="abtn" onclick="addById(${item.id})">+</button>
+      </div>`;
+    chat.appendChild(d);
+  });sc();
+}
+
+function addById(id){addItem(MENU.find(i=>i.id===id));}
+function addItem(item){
+  if(!cart[item.id])cart[item.id]={item,qty:0};
+  cart[item.id].qty++;
+  updateBar();
+  const ms=['✅ נוסף!','🎉 הוסף לסל!','👍 אחלה בחירה!'];
+  bot(`${ms[~~(Math.random()*3)]} ${item.emoji} ${item.name} (סה"כ: ${total()} ₪)`);
+}
+
+function finish(){
+  if(!count()){bot('הסל ריק 😅 תוסיף קודם גלידות!');showMainQR();return;}
+  const lines=Object.values(cart).map(v=>`${v.item.emoji} ${v.item.full} x${v.qty} = ${v.item.price*v.qty} ₪`).join('\n');
+  bot(`📋 סיכום הזמנה:\n\n${lines}\n\n💰 סה"כ: ${total()} ש"ח\n\nללחוץ על כפתור הוואטסאפ למטה לשליחה ✅`);
+  setQR([{l:'➕ הוסף עוד',fn:showAll},{l:'🗑️ נקה',fn:clearCart}]);
+}
+
+function openWA(e){
+  e.preventDefault();
+  if(!count()){bot('הסל ריק! תוסיף קודם גלידות 🍦');return;}
+  const lines=Object.values(cart).map(v=>`${v.item.emoji} ${v.item.full} x${v.qty} (${v.item.price*v.qty}₪)`).join('\n');
+  const msg=`שלום אלעד! אני רוצה להזמין:\n\n${lines}\n\n💰 סה"כ: ${total()} ש"ח\n\nאנא אשר הזמנה, תודה!`;
+  window.open(`https://wa.me/9720524585860?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+function doSend(){
+  const inp=document.getElementById('inp');
+  const t=inp.value.trim();if(!t)return;
+  inp.value='';usr(t);
+  // חיפוש לפי מילות מפתח
+  const tl=t.toLowerCase();
+  const found=MENU.find(i=>i.keys.some(k=>tl.includes(k)));
+  if(found){addItem(found);return;}
+  if(tl.includes('מחיר')||tl.includes('כמה')||tl.includes('רשימה')){showAll();return;}
+  if(tl.includes('סיים')||tl.includes('גמרתי')||tl.includes('לשלם')){finish();return;}
+  if(tl.includes('נקה')||tl.includes('מחק')){clearCart();return;}
+  bot('לא זיהיתי 😅 נסה לכתוב שם גלידה כמו "מגנום" או "פסק זמן"');showMainQR();
+}
+
+window.onload=()=>{
+  setTimeout(()=>{
+    bot('שלום! 🍦 ברוך הבא לבוט ההזמנות של אלעד!\nמשלוח גלידות לרמת גן וגבעתיים.\n\nמה תרצה לאכול היום?');
+    showMainQR();
+  },400);
+};
+</script>
+</body>
+</html>
